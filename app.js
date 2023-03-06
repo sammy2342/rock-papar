@@ -2,6 +2,10 @@ let randomNumber
 let rock = 0 
 let paper = 1 
 let sicciors = 2
+let playerScore = document.getElementById('score-user')
+let compScore = document.getElementById('scor-comp')
+let tieScore = document.getElementById('tie-score')
+console.log(tieScore, '<-----', playerScore)
 let rockEl = document.getElementById('0')
 let paperEl = document.getElementById('1')
 let sicciorsEl = document.getElementById('2')
@@ -38,21 +42,27 @@ const playerClick = () => {
     })
 }
 
-console.log(playerId, '<-----')
+// console.log(playerId, '<-----')
 
 const checkWin = () => {
-    if (playerId === randomNumber.toString()) {
-        console.log('>playerId',playerId, randomNumber, '<computerrantnumber')
-        alert('tie')
+    const playerChoice = parseInt(playerId)
+    console.log(playerChoice)
+
+    if (playerChoice === randomNumber) {
+        // console.log('>playerId',playerChoice, randomNumber, '<computerrantnumber')
+        // alert('tie')
         scores.tie++
-      } else if (playerId === "0" && randomNumber === 2 || playerId === "1" && randomNumber === 0 || playerId === "2" && randomNumber === 1) {
-        console.log('>playerId>>>',playerId, randomNumber, '<<<<<computerrantnumber')
-        alert('you won')
+        tieScore.innerHTML = scores.tie
+      } else if (playerChoice === 0 && randomNumber === 2 || playerChoice === 1 && randomNumber === 0 || playerChoice === 2 && randomNumber === 1) {
+        // console.log('>playerId>>>',playerChoice, randomNumber, '<<<<<computerrantnumber')
+        // alert('you won')
         scores.win++
+        playerScore.innerHTML = scores.win
       } else {
-        console.log('>playerId>>>',playerId, randomNumber, '<<<<<computerrantnumber')
-        alert('computer won')
+        // console.log('>playerId>>>',playerChoice, randomNumber, '<<<<<computerrantnumber')
+        // alert('computer won')
         scores.lose++
+        compScore.innerHTML = scores.lose
       }
 }
 
