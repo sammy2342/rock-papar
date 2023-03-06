@@ -5,7 +5,7 @@ let sicciors = 2
 let playerScore = document.getElementById('score-user')
 let compScore = document.getElementById('scor-comp')
 let tieScore = document.getElementById('tie-score')
-console.log(tieScore, '<-----', playerScore)
+
 let rockEl = document.getElementById('0')
 let paperEl = document.getElementById('1')
 let sicciorsEl = document.getElementById('2')
@@ -18,56 +18,52 @@ let scores = {
 
 
 const getComputerChoice = () => {
-    randomNumber  = Math.floor(Math.random() * 3)
+    return Math.floor(Math.random() * 3)
 }
 
 const playerClick = () => { 
     rockEl.addEventListener("click", function(evt) { 
-        playerId = evt.target.id
+        playerId = parseInt(evt.target.id)
         console.log(playerId, 'thisss')
         checkWin()
-        getComputerChoice()
+        // getComputerChoice()
     })
     paperEl.addEventListener("click", function(evt) { 
-        playerId = evt.target.id
-        console.log(playerId)
+        console.log(paperEl)
+        playerId = parseInt(evt.target.id)
+        console.log(playerId, '<----')
         checkWin()
-        getComputerChoice()
+        // getComputerChoice()
     })
     sicciorsEl.addEventListener("click", function(evt) { 
-        playerId = evt.target.id
-        console.log(playerId)
+        playerId = parseInt(evt.target.id)
+        console.log(playerId, '<-----')
+        console.log(evt.target.id, 'this is for evt target.id')
         checkWin()
-        getComputerChoice()
+        // getComputerChoice()
     })
 }
 
 // console.log(playerId, '<-----')
 
 const checkWin = () => {
-    const playerChoice = parseInt(playerId)
-    console.log(playerChoice)
+    const randomNumber = getComputerChoice()
 
-    if (playerChoice === randomNumber) {
-        // console.log('>playerId',playerChoice, randomNumber, '<computerrantnumber')
-        // alert('tie')
+    if (playerId === randomNumber) {
         scores.tie++
         tieScore.innerHTML = scores.tie
-      } else if (playerChoice === 0 && randomNumber === 2 || playerChoice === 1 && randomNumber === 0 || playerChoice === 2 && randomNumber === 1) {
-        // console.log('>playerId>>>',playerChoice, randomNumber, '<<<<<computerrantnumber')
-        // alert('you won')
+    } else if (playerId === 0 && randomNumber === 2 || playerId === 1 && randomNumber === 0 || playerId === 2 && randomNumber === 1) {
         scores.win++
         playerScore.innerHTML = scores.win
-      } else {
-        // console.log('>playerId>>>',playerChoice, randomNumber, '<<<<<computerrantnumber')
-        // alert('computer won')
+    } else {
         scores.lose++
         compScore.innerHTML = scores.lose
-      }
+    }
+
 }
 
 function init() { 
-    getComputerChoice()
+
     playerClick()
 }
 
