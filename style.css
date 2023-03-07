@@ -112,7 +112,7 @@ main {
 .button-for-rock-paper-sicciors { 
     border: 5px solid white;
     background-color: transparent;
-    padding: 80px;
+    padding: 70px;
     border-radius: 2990px;
     color: white;
     font-size: 20px;
@@ -124,11 +124,13 @@ main {
 i { 
     position: relative;
     font-size: 80px;
+    width: 100px;
 }
 
 .button-for-rock-paper-sicciors:hover, i:hover { 
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     transition: 2s;
     color: black;
+    transform: scale(1.2);
 }
 
